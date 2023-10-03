@@ -13,7 +13,7 @@ export class CartComponent implements OnInit {
   totalPrice: number = 0;
   name: string = '';
   address: string = '';
-  creditNumber!: number;
+  creditNumber: string = '';
 
   constructor(private cartService: CartService, private route: Router) {}
 

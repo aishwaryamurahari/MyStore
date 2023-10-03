@@ -42,10 +42,10 @@
       />
       <h3>Credit card number</h3>
       <input
-        type="text"
-        name="address"
+        type="number"
+        name="creditNumber"
         required
-        minlength="16"
+        pattern="^\d{16}$"
         placeholder="(16-digit-number)"
         [(ngModel)]="creditNumber"
       />

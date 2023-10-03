@@ -17,6 +17,7 @@ export class CartService {
         (cartItem) => cartItem.name === item.name
       );
       this.cart[index].quantity = this.cart[index].quantity! + item.quantity!;
+      alert(`Added ${item.name} to cart`);
     } else {
       this.cart.push(item);
       alert(`Added ${item.name} to cart`);
@@ -26,6 +27,7 @@ export class CartService {
   addOneItem(itemName: string) {
     let index = this.cart.findIndex((cartItem) => cartItem.name === itemName);
     this.cart[index].quantity!++;
+    alert(`Added ${itemName} to cart`);
   }
 
   removeOneItem(itemName: string) {
@@ -35,6 +37,7 @@ export class CartService {
       alert(`${itemName} has been removed`);
     } else {
       this.cart[index].quantity!--;
+      alert(`${itemName} has been removed`);
     }
   }
 
