@@ -1,0 +1,56 @@
+<div>
+  <div class="empty-cart-message" *ngIf="cartItems.length === 0">
+    Your cart is empty!
+  </div>
+  <div class="cart-container">
+    <div class="cart-item-container">
+      <div *ngFor="let cartitem of cartItems" class="cart-item">
+        <img src="{{ cartitem.url }}" />
+        <div class="cart-item-details">
+          <p>{{ cartitem.name }}</p>
+          <p>$ {{ cartitem.price }}</p>
+          <div>
+            <button (click)="addOneItem(cartitem.name!)">+</button
+            ><input [(ngModel)]="cartitem.quantity" /><button
+              (click)="removeOneItem(cartitem.name!)"
+            >
+              -
+            </button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="totalPrice > 0">Total: {{ totalPrice }}</div>
+    </div>
+    <form #form="ngForm" *ngIf="cartItems.length > 0" (ngSubmit)="submitForm()">
+      <h3>Full name</h3>
+      <input
+        type="text"
+        name="fullname"
+        required
+        minlength="3"
+        placeholder="(minimum 3 characters)"
+        [(ngModel)]="name"
+      />
+      <h3>Address</h3>
+      <input
+        type="text"
+        name="address"
+        required
+        minlength="6"
+        placeholder="(minimum 6 characters)"
+        [(ngModel)]="address"
+      />
+      <h3>Credit card number</h3>
+      <input
+        type="text"
+        name="address"
+        required
+        minlength="16"
+        placeholder="(16-digit-number)"
+        [(ngModel)]="creditNumber"
+      />
+      <p>We'll never share your payment details with anyone else.</p>
+      <button [disabled]="form.invalid" type="submit">Submit</button>
+    </form>
+  </div>
+</div>

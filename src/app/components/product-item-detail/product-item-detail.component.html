@@ -1,0 +1,27 @@
+<div class="detail-container">
+  <div class="detail-item">
+    <img class="product-image" src="{{ product.url }}" />
+  </div>
+  <div>
+    <h1>{{ product.name }}</h1>
+    <h3>${{ product.price }}</h3>
+    <h3>{{ product.description }}</h3>
+    <select
+      [(ngModel)]="quantity"
+      id="quantity"
+      (ngModelChange)="onChange(quantity)"
+    >
+      <option *ngFor="let quantity of quantities" [ngValue]="quantity">
+        {{ quantity }}
+      </option>
+    </select>
+    <br />
+    <button
+      (click)="addItem(product.name!, product.price!, quantity!, product.url!)"
+    >
+      Add to Cart
+    </button>
+    <br />
+    <a routerLink="/"> Back to Products</a>
+  </div>
+</div>
